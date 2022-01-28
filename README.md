@@ -1,0 +1,1 @@
+- When skaffold not found, `sudo snap install skaffold`
