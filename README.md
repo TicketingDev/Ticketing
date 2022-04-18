@@ -18,6 +18,7 @@ sudo install skaffold /usr/local/bin/
   ```
 - Run app `skaffold dev`
 - Open browser, go to `https://ticketing.dev/api/users/currentuser` and type `thisisunsafe`
+- To run test, go to auth directory, install packages and run `yarn test`
 - If there is an issue for making the api call from postman
   - Stop local docker
   - In postman, from settings, disable `ssl` certificate validation
