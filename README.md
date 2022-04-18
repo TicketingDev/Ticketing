@@ -1,4 +1,23 @@
-- When skaffold not found, `sudo snap install skaffold`
+- Install minikube [Minikube](https://minikube.sigs.k8s.io/docs/start/) and start `minikube start` 
+- Install kubectl from [K8s](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- Install gcloud by `sudo snap install google-cloud-sdk --classic`
+- Logged in with googe cloud `gcloud auth login`
+- Configure by `gcloud init`
+- Configure the k8s clusters `gcloud container clusters get-credentials ticketing-dev`
+- Verify running pods `kubectl get pods` and this should resolves the `auth` and `mongo` pods
+- Create ingress nginx using `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.2/deploy/static/provider/cloud/deploy.yaml
+` from [site](https://kubernetes.github.io/ingress-nginx/deploy/)
+- Also configure for gke `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/cloud/deploy.yaml`
+- Update the local computer host list by the gcp load balancer ip
+- Update credentials for google code build `gcloud auth application-default login`
+- When skaffold not found,
+  - [Download](https://skaffold.dev/docs/install/) from here, using 
+  ```
+  curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+sudo install skaffold /usr/local/bin/
+  ```
+- Run app `skaffold dev`
+- Open browser, go to `https://ticketing.dev/api/users/currentuser` and type `thisisunsafe`
 - If there is an issue for making the api call from postman
   - Stop local docker
   - In postman, from settings, disable `ssl` certificate validation
@@ -41,3 +60,9 @@ Ref: [Stackoverflow](https://stackoverflow.com/questions/56654149/error-executin
 While run the tests, it is possible to get error in first time.
 
 Double check by running it twice.
+
+## Error 3
+
+failed: getting cloudbuild client: google: could not find default credentials.
+
+Run `gcloud auth application-default login`
