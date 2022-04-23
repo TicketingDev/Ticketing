@@ -16,6 +16,7 @@
   curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
 sudo install skaffold /usr/local/bin/
   ```
+- If we do not use google cloud, make sure all the docker images are build and publish in docker hub,  because, scaffold expects to get the images from docker hub when google cloud is not being used
 - Run app `skaffold dev`
 - Open browser, go to `https://ticketing.dev/api/users/currentuser` and type `thisisunsafe`
 - To run test, go to auth directory, install packages and run `yarn test`
