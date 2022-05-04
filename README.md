@@ -35,7 +35,7 @@ kubectl get secrets
 ```
 
 - To open nats streaming server, first get the pod name using `kubectl get pods` and the pod should start with name `nats-depl-`. Now export port `4222` using `kubectl port-forward nats-depl-random)id 4222:4222`
--
+- To clear all the testing message in nats, restart the nats pod. get the running nats pods by `kubectl get pods`. Delete the nats pods using `kubectl delete pod nats-depl-random_generated_id`
 
 ## Error 1
 
