@@ -8,7 +8,7 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
   queueGroupName = 'payments-service';
 
   onMessage(data: TicketCreatedEvent['data'], msg: nats.Message): void {
-    console.log('Event data!', data);
+    console.log('Event data', data);
 
     console.log(data.id);
     console.log(data.title);
