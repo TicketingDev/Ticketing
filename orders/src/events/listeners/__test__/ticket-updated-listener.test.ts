@@ -54,7 +54,7 @@ it('finds, updates, and saves a ticket', async () => {
 });
 
 it('acknowledge the message', async () => {
-  const { msg, data, ticket, listener } = await setup();
+  const { msg, data, listener } = await setup();
 
   await listener.onMessage(data, msg);
 
