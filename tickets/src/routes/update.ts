@@ -1,4 +1,5 @@
 import {
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   requireAuth,
@@ -6,8 +7,8 @@ import {
 } from '@ticketing-sn/common';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { Ticket } from '../models/ticket';
 import { natsWrapper } from '../nats-wrapper';
 
@@ -28,6 +29,10 @@ router.put(
 
     if (!ticket) {
       throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     if (ticket.userId !== req.currentUser!.id) {
