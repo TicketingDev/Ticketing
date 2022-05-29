@@ -70,3 +70,11 @@ Double check by running it twice.
 failed: getting cloudbuild client: google: could not find default credentials.
 
 Run `gcloud auth application-default login`
+
+## Error 4
+
+In case ticket/order pod created before mongodb or redis pod, restart the ticket or order pod. To restart, get the pod list, `kubectl get pods`. Now delete the pod `kubectl delete pod pod_name`. This should simply restart the pod.
+
+## Error 5
+
+For error like `Non-string value passed to ts.resolveTypeReferenceDirective` update `ts-node-dev` to `^2.0.0`
